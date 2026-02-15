@@ -1,0 +1,8 @@
+{
+  "name": "ARKIVE - Technical Excellence",
+  "description": "A high-end, minimalist technical services and contracting platform for premium property maintenance and construction.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
