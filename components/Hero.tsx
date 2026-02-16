@@ -1,11 +1,12 @@
 
+'use client';
+
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
     <section className="relative min-h-[90vh] md:min-h-screen flex items-center pt-24 pb-12 px-6 bg-white overflow-hidden">
-      {/* Background Decor - Simplified */}
       <div className="absolute top-0 right-0 w-full md:w-1/4 h-full bg-surface -z-10 opacity-30 md:opacity-100"></div>
       
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center z-10 w-full">
@@ -47,7 +48,6 @@ const Hero: React.FC = () => {
             alt="Architectural Precision" 
             className="w-full aspect-[16/10] object-cover grayscale brightness-105 hover:grayscale-0 transition-all duration-1000 shadow-sm rounded-sm"
           />
-          {/* Subtle floating detail */}
           <div className="absolute -bottom-6 right-6 md:-right-12 bg-white p-6 shadow-xl border-b-2 border-creme hidden sm:block">
             <span className="text-3xl font-black text-inkwell block">25+</span>
             <span className="text-[10px] text-slate-400 uppercase tracking-widest">Years Expertise</span>

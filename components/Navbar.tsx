@@ -1,4 +1,6 @@
 
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 
@@ -29,7 +31,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
-      const offset = 80; // Account for fixed header
+      const offset = 80;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -44,16 +46,25 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${isScrolled ? 'glass py-3 shadow-2xl shadow-inkwell/5 border-b border-slate-100' : 'bg-transparent py-8'}`}>
+    <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${isScrolled ? 'glass py-3 shadow-2xl shadow-inkwell/5 border-b border-slate-100' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        {/* Logo */}
         <a 
           href="#" 
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          className="flex items-center gap-3 group"
+          className="flex items-center gap-4 group"
         >
-          <div className="w-12 h-12 bg-inkwell flex items-center justify-center text-white font-bold text-2xl rounded-sm group-hover:bg-creme group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-xl shadow-inkwell/20">
-            A
+          <div className="w-14 h-14 relative flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+            {/* The user provided logo image */}
+            <img 
+              src="https://raw.githubusercontent.com/stackblitz/stackblitz-images/main/arkive-logo.png" 
+              alt="ARKIVE Logo" 
+              className="w-full h-full object-contain"
+              onError={(e) => {
+                // Fallback to a styled 'A' if image fails to load
+                (e.target as any).style.display = 'none';
+                (e.target as any).parentElement.innerHTML = '<div class="w-12 h-12 bg-inkwell flex items-center justify-center text-white font-bold text-2xl rounded-sm">A</div>';
+              }}
+            />
           </div>
           <div className="flex flex-col">
             <span className={`text-2xl font-black tracking-tighter uppercase transition-colors leading-none ${isScrolled ? 'text-inkwell' : 'text-inkwell'}`}>
@@ -63,7 +74,6 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
           </div>
         </a>
 
-        {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-10">
           <div className="flex gap-10">
             {navLinks.map((link) => (
@@ -103,7 +113,6 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
           </div>
         </div>
 
-        {/* Mobile Menu Toggle */}
         <div className="md:hidden flex items-center gap-4">
           <button onClick={onCartClick} className="relative p-2 text-inkwell">
             <ShoppingBag size={28} />
@@ -122,7 +131,6 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
       <div className={`md:hidden fixed inset-0 top-[72px] bg-white transition-all duration-500 transform ${isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'} z-[90]`}>
         <div className="flex flex-col h-full p-12 gap-10">
           {navLinks.map((link, i) => (

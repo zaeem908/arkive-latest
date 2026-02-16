@@ -1,4 +1,6 @@
 
+'use client';
+
 import React from 'react';
 import { 
   Hammer, 
@@ -40,7 +42,6 @@ interface ServicesProps {
 const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
   return (
     <section id="expertise" className="py-24 md:py-40 px-6 bg-surface text-inkwell relative overflow-hidden">
-      {/* Decorative text */}
       <div className="absolute top-40 right-0 text-[20vw] font-black text-slate-100 select-none opacity-40 leading-none pointer-events-none">DIVISIONS</div>
       
       <div className="max-w-7xl mx-auto relative z-10">
@@ -81,8 +82,6 @@ const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
                 <div className="flex items-center gap-3 mt-10 text-[10px] font-black uppercase tracking-[0.3em] text-creme group-hover:text-white transition-all transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
                   Detailed Specs <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
                 </div>
-                
-                {/* Visual indicator of category */}
                 <div className="absolute -bottom-4 -right-4 text-slate-50 text-[100px] font-black select-none group-hover:text-white/5 transition-all rotate-12">
                    {service.id.replace('s', '')}
                 </div>

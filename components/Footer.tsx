@@ -1,4 +1,6 @@
 
+'use client';
+
 import React from 'react';
 import { Instagram, Twitter, Linkedin, ArrowUpRight, MapPin, Mail, Phone, ChevronRight } from 'lucide-react';
 
@@ -11,7 +13,6 @@ const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
 
   return (
     <footer className="bg-white text-inkwell relative overflow-hidden">
-      {/* Final CTA / Pre-Footer */}
       <div className="bg-surface py-24 px-6 border-b border-slate-100">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="space-y-4 text-center md:text-left">
@@ -32,10 +33,16 @@ const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 mb-24">
             <div className="lg:col-span-5 space-y-12">
               <div 
-                className="flex items-center gap-3 cursor-pointer group"
+                className="flex items-center gap-4 cursor-pointer group"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
-                <div className="w-16 h-16 bg-inkwell flex items-center justify-center text-white font-bold text-3xl rounded-sm shadow-2xl shadow-inkwell/20 group-hover:bg-creme transition-colors">A</div>
+                <div className="w-20 h-20 relative flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                  <img 
+                    src="https://raw.githubusercontent.com/stackblitz/stackblitz-images/main/arkive-logo.png" 
+                    alt="ARKIVE Logo" 
+                    className="w-full h-full object-contain"
+                  />
+                </div>
                 <div className="flex flex-col">
                   <span className="text-4xl font-black tracking-tighter uppercase leading-none">Arkive</span>
                   <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-creme">Precision Technical</span>
@@ -124,8 +131,6 @@ const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
           </div>
         </div>
       </div>
-      
-      {/* Architectural Line Decor */}
       <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-creme/20 to-transparent"></div>
     </footer>
   );

@@ -1,4 +1,6 @@
 
+'use client';
+
 import React from 'react';
 import { ShoppingCart, ArrowRight } from 'lucide-react';
 import { PRODUCTS } from '../constants';
@@ -55,12 +57,6 @@ const Shop: React.FC<ShopProps> = ({ addToCart }) => {
               <p className="text-sm text-slate-400 font-light leading-relaxed">{product.description}</p>
             </div>
           ))}
-        </div>
-
-        <div className="mt-24 md:hidden text-center">
-          <button className="bg-inkwell text-white w-full py-5 rounded-sm font-bold uppercase tracking-widest">
-            View All Inventory
-          </button>
         </div>
       </div>
     </section>

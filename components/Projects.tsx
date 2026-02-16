@@ -1,4 +1,6 @@
 
+'use client';
+
 import React, { useRef } from 'react';
 import { PROJECTS } from '../constants';
 import { Project } from '../types';
@@ -21,7 +23,6 @@ const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
 
   return (
     <section id="work" className="py-24 md:py-40 bg-white text-inkwell relative overflow-hidden">
-      {/* Decorative vertical text for luxury feel */}
       <div className="absolute left-10 top-1/2 -translate-y-1/2 text-[12vw] font-black text-slate-50 select-none opacity-40 leading-none pointer-events-none origin-center -rotate-90">
         COMMISSIONS
       </div>
@@ -57,7 +58,6 @@ const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
         </div>
       </div>
 
-      {/* Horizontal Draggable-like Carousel */}
       <div 
         ref={scrollRef}
         className="flex overflow-x-auto gap-8 px-[calc((100vw-80rem)/2+1.5rem)] pb-20 no-scrollbar snap-x snap-mandatory scroll-pl-[calc((100vw-80rem)/2+1.5rem)]"
@@ -74,8 +74,6 @@ const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
                 alt={project.title} 
                 className="w-full h-full object-cover grayscale brightness-90 transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105 group-hover:brightness-100"
               />
-              
-              {/* Overlay for Technical Quick Data (Optimized for short attention span) */}
               <div className="absolute inset-x-0 bottom-0 p-8 md:p-12 translate-y-full group-hover:translate-y-0 transition-transform duration-500 bg-gradient-to-t from-inkwell via-inkwell/80 to-transparent">
                 <div className="grid grid-cols-3 gap-6 text-white border-t border-white/10 pt-8">
                   <div className="space-y-2">
@@ -96,7 +94,6 @@ const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
                 </div>
               </div>
 
-              {/* Action Button Floating */}
               <button 
                 onClick={() => onSelectProject(project)}
                 className="absolute top-8 right-8 w-16 h-16 bg-white text-inkwell rounded-full flex items-center justify-center shadow-2xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 hover:bg-creme hover:text-white"
@@ -123,7 +120,6 @@ const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
           </div>
         ))}
 
-        {/* Final "View All" Slide */}
         <div className="flex-none w-[85vw] md:w-[400px] snap-start bg-surface rounded-sm flex flex-col items-center justify-center p-12 text-center border-2 border-dashed border-slate-200 hover:border-creme hover:bg-creme/5 transition-all group">
           <div className="space-y-6">
             <h4 className="text-4xl font-black uppercase tracking-tighter leading-tight text-inkwell group-hover:text-creme transition-colors">Complete <br /> Archive.</h4>
@@ -135,7 +131,6 @@ const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
         </div>
       </div>
 
-      {/* Progress Bar for the Carousel */}
       <div className="max-w-7xl mx-auto px-6 mt-12 hidden md:block">
         <div className="h-[1px] w-full bg-slate-100 relative">
           <div className="absolute top-0 left-0 h-full bg-creme w-1/3 transition-all duration-300"></div>
