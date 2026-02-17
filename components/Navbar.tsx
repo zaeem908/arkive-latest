@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ShoppingBag } from 'lucide-react';
+import arkiveLogo from '@/app/images/arkive-logo.jpg';
 
 interface NavbarProps {
   cartCount: number;
@@ -54,9 +55,9 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
           className="flex items-center gap-4 group"
         >
           <div className="w-14 h-14 relative flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-            {/* The user provided logo image */}
+            {/* ARKIVE logo image */}
             <img 
-              src="https://raw.githubusercontent.com/stackblitz/stackblitz-images/main/arkive-logo.png" 
+              src={arkiveLogo}
               alt="ARKIVE Logo" 
               className="w-full h-full object-contain"
               onError={(e) => {

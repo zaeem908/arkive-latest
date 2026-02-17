@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { Instagram, Twitter, Linkedin, ArrowUpRight, MapPin, Mail, Phone, ChevronRight } from 'lucide-react';
+import arkiveLogo from '@/app/images/arkive-logo.jpg';
 
 interface FooterProps {
   onLinkClick: (id: string) => void;
@@ -38,7 +39,7 @@ const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
               >
                 <div className="w-20 h-20 relative flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
                   <img 
-                    src="https://raw.githubusercontent.com/stackblitz/stackblitz-images/main/arkive-logo.png" 
+                    src={arkiveLogo}
                     alt="ARKIVE Logo" 
                     className="w-full h-full object-contain"
                   />
