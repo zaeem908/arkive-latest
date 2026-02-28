@@ -1,14 +1,25 @@
-
 import React, { useState } from 'react';
 import { Send, CheckCircle } from 'lucide-react';
 
+const QUOTE_EMAIL = 'info@arkive.ae';
+
 const QuoteForm: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    service: 'Custom Pergola Design',
+    description: ''
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const subject = encodeURIComponent(`Quote Request from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nService: ${formData.service}\n\nProject Description:\n${formData.description}`
+    );
+    window.location.href = `mailto:${QUOTE_EMAIL}?subject=${subject}&body=${body}`;
     setSubmitted(true);
-    // In production, send this to backend
     setTimeout(() => setSubmitted(false), 5000);
   };
 
@@ -69,17 +80,17 @@ const QuoteForm: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Full Name</label>
-                <input required type="text" className="w-full bg-white border border-slate-100 p-4 focus:ring-2 focus:ring-creme outline-none transition-all text-sm" placeholder="John Doe" />
+                <input required type="text" name="name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full bg-white border border-slate-100 p-4 focus:ring-2 focus:ring-creme outline-none transition-all text-sm" placeholder="John Doe" />
               </div>
               <div className="space-y-2">
                 <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Email Address</label>
-                <input required type="email" className="w-full bg-white border border-slate-100 p-4 focus:ring-2 focus:ring-creme outline-none transition-all text-sm" placeholder="john@example.com" />
+                <input required type="email" name="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full bg-white border border-slate-100 p-4 focus:ring-2 focus:ring-creme outline-none transition-all text-sm" placeholder="john@example.com" />
               </div>
             </div>
             
             <div className="space-y-2">
               <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Service Category</label>
-              <select className="w-full bg-white border border-slate-100 p-4 focus:ring-2 focus:ring-creme outline-none transition-all text-sm appearance-none">
+              <select value={formData.service} onChange={(e) => setFormData({ ...formData, service: e.target.value })} className="w-full bg-white border border-slate-100 p-4 focus:ring-2 focus:ring-creme outline-none transition-all text-sm appearance-none">
                 <option>Custom Pergola Design</option>
                 <option>Structural Welding</option>
                 <option>Emergency Technical Repair</option>
@@ -90,7 +101,7 @@ const QuoteForm: React.FC = () => {
 
             <div className="space-y-2">
               <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Project Description</label>
-              <textarea required rows={4} className="w-full bg-white border border-slate-100 p-4 focus:ring-2 focus:ring-creme outline-none transition-all text-sm" placeholder="Tell us about your project requirements..."></textarea>
+              <textarea required rows={4} name="description" value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} className="w-full bg-white border border-slate-100 p-4 focus:ring-2 focus:ring-creme outline-none transition-all text-sm" placeholder="Tell us about your project requirements..."></textarea>
             </div>
 
             <button type="submit" className="w-full bg-inkwell text-white py-5 rounded-sm font-bold uppercase tracking-[0.3em] hover:bg-creme transition-all flex items-center justify-center gap-3">

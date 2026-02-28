@@ -94,7 +94,7 @@ const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
                   </div>
                   <div className="flex items-start gap-4">
                     <Mail className="text-creme shrink-0" size={20} />
-                    <span className="text-xs font-bold text-inkwell uppercase tracking-widest">ops@arkive.ae</span>
+                    <span className="text-xs font-bold text-inkwell uppercase tracking-widest">info@arkive.ae</span>
                   </div>
                 </div>
                 <div className="space-y-4">
